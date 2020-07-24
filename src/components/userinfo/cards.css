@@ -1,0 +1,9 @@
+.site-card-border-less-wrapper {
+  padding: 3px;
+  margin-right: 71%;
+  margin-bottom: 8%;
+  margin-top: 1%;
+}
+  [data-theme="dark"] .site-card-border-less-wrapper {
+    background: #303030;
+  }
