@@ -1,5 +1,3 @@
-User activities [Demo](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 Clone the project from the GitHub.
