@@ -5,26 +5,29 @@ import { Calendar, Badge } from 'antd';
 import 'antd/dist/antd.css';
 import './calendar.css';
 
+import userData from '../api/data.json';
+
+const userName = userData.members;
 
 function getListData(value) {
   let listData;
   switch (value.date()) {
     case 1:
       listData = [
-        { type: 'warning', content: 'Feb 1 2020  1:33PM.' },
-        { type: 'success', content: 'Feb 1 2020 1:54PM.' },
+        { type: 'warning', content: '1:33PM.' },
+        { type: 'success', content: '1:54PM.' },
       ];
       break;
     case 1:
       listData = [
-        { type: 'warning', content: 'Mar 1 2020  11:11AM.' },
-        { type: 'success', content: 'Mar 1 2020  11:11AM.' },
+        { type: 'warning', content: '11:11AM.' },
+        { type: 'success', content: '11:11AM.' },
       ];
       break;
     case 16:
       listData = [
-        { type: 'warning', content: 'Mar 16 2020  5:33PM' },
-        { type: 'success', content: 'Mar 16 2020 8:02PM' },
+        { type: 'warning', content: '5:33PM' },
+        { type: 'success', content: '8:02PM' },
       ];
       break;
     default:
@@ -61,12 +64,28 @@ function monthCellRender(value) {
   ) : null;
 }
 
-function DetailsInCalendar(props) {
-  const userId = props.userId;
-  console.log('insiddsfdeCal', userId)
-  return (
-      <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} />
-  );
+
+class DetailsInCalendar extends Component {
+	render() {
+    const userId = this.props.userId;
+		return (
+                  userData.ok ?
+                            <ul>
+                              {userName.map(user =>
+                                {
+                                  return user.id === userId
+                                                     ? <>
+                                                          <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} />
+                                                        </>
+                                                     : ''
+                                }
+                              )}
+                            </ul>
+                           :
+                           <p>This person has no activities</p>
+        );
+    }
 }
+
 
 export default DetailsInCalendar;
